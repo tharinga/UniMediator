@@ -1,0 +1,24 @@
+{
+    "name": "com.tharinga.unimediator",
+    "version": "1.0.1",
+    "displayName": "UniMediator",
+    "description": "A Unity library that implements the Mediator pattern. Loosely based on MediatR",
+    "unity": "2017.4",
+    "dependencies": {},
+    "keywords": [
+        "library", 
+        "mediator", 
+        "mediatr", 
+        "event", 
+        "events", 
+        "event system", 
+        "notification", 
+        "notifications", 
+        "notification system"
+    ],
+    "author": {
+        "name": "Timon Haringa",
+        "email": "timonster@gmail.com",
+        "url": "https://www.github.com/tharinga/UniMediator"
+    } 
+}

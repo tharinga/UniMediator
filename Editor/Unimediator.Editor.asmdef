@@ -1,0 +1,16 @@
+{
+    "name": "Unimediator.Editor",
+    "references": [
+        "GUID:2b91dc99a73f245e89beb372dedcec17"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}
