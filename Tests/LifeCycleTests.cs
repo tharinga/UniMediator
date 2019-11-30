@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Text.RegularExpressions;
 using NUnit.Framework;
 using static System.Linq.Enumerable;
 using UnityEngine;
@@ -70,7 +71,13 @@ namespace Tests
             
             yield return null;
             
+        #if UNITY_EDITOR
             Assert.Throws<UniMediatorException>(() => mediator.Send(new MessageWithValueReturnType(0)));
+        #else
+            mediator.Send(new MessageWithValueReturnType(0));
+            LogAssert.Expect(LogType.Error, "UniMediator: No handler returning type System.Int32 is registered for Tests.MessageWithValueReturnType");
+        #endif
+            
         }
     }
     

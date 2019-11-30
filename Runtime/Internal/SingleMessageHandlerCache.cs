@@ -22,17 +22,29 @@ namespace UniMediator.Internal
 
             if (!_handlers.TryGetValue(message.GetType(), out var @delegate))
             {
-                throw new UniMediatorException(
+                return MissingReturnValue<T>(
                     $"No handler returning type {typeof(T)} is registered for {message}");
             }
 
             if (! (@delegate is Func<ISingleMessage<T>, T> func))
             {
-                throw new UniMediatorException(
+                return MissingReturnValue<T>(
                     $"Handler returning type {typeof(T)} for {message} is null");
             }
             
             return func.Invoke(message);
+        }
+
+        // If there is no sane value to return, throw an Exception if running in 
+        // Unity Editor. Return default(T) if running outside of Editor
+        private T MissingReturnValue<T>(string errorMessage)
+        {
+        #if UNITY_EDITOR
+            throw new UniMediatorException(errorMessage);
+        #else
+            Debug.LogError("UniMediator: " + errorMessage);
+            return default(T);
+        #endif
         }
         
         public void Remove(Type messageType)
